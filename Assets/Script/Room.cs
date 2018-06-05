@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Room : MonoBehaviour {
     public GameObject mis;
+    GameObject memoryCards;
 	// Use this for initialization
 	void Start () {
-		
+        memoryCards = GameObject.Find("CardHandler");
 	}
 	
 	// Update is called once per frame
@@ -17,6 +18,7 @@ public class Room : MonoBehaviour {
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 //StartCoroutine(ScaleMe(hit.transform));
@@ -24,6 +26,11 @@ public class Room : MonoBehaviour {
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
                     SceneManager.LoadScene(1);
+                }
+                if (memoryCards.Equals(hit.transform.gameObject))
+                {
+                    Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+                    SceneManager.LoadScene(2);
                 }
             }
         }

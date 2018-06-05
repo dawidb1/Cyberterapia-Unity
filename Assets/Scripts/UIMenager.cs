@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
 public class UIMenager : MonoBehaviour {
-
+    //Brajan&Patryk
     public static bool gameOver = false;
-
 
     public Text scoreText;
     public Text TimeText;
@@ -21,7 +20,6 @@ public class UIMenager : MonoBehaviour {
         set { score = value; }
     }
 
-
     string EndTime;
     string EndScore;
 
@@ -30,7 +28,6 @@ public class UIMenager : MonoBehaviour {
 
     public List<string> Results;
    
-
 
 	// Use this for initialization
 	void Start ()
@@ -43,9 +40,6 @@ public class UIMenager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
-      
-
         if (gameOver==false)
         {
             float t = Time.time - startTime;
@@ -79,27 +73,17 @@ public class UIMenager : MonoBehaviour {
             }
 
         }
-
-
     }
 
     public void Replay()
     {
-       
-
         Application.LoadLevel("lvl1");
-
         
         gameOver = false;
         ShipSpawner.Speed = -5f;
-
-        
-
     }
     public void Exit()
     {
-        
-
         StreamWriter writer = new StreamWriter("results.txt");
         foreach (string result in Results)
         {
