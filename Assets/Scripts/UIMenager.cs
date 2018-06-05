@@ -93,7 +93,6 @@ public class UIMenager : MonoBehaviour {
         }
         writer.Close();
 
-        Application.Quit();
         SceneManager.LoadScene(0);
     }
     void ButtonActivating()
