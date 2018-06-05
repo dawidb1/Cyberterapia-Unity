@@ -32,6 +32,7 @@ public class UIMenager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        Debug.Log("Start");
         score = 0;
         TimeText.text = "00:00";
         startTime = Time.time;
@@ -40,6 +41,7 @@ public class UIMenager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        Debug.Log("update");
         if (gameOver==false)
         {
             float t = Time.time - startTime;
@@ -71,13 +73,13 @@ public class UIMenager : MonoBehaviour {
                     Results.Add(result);
                 }
             }
-
         }
     }
 
     public void Replay()
     {
-        Application.LoadLevel("lvl1");
+        Debug.Log("Replay");
+        SceneManager.LoadScene(1);
         
         gameOver = false;
         ShipSpawner.Speed = -5f;
@@ -92,7 +94,7 @@ public class UIMenager : MonoBehaviour {
         writer.Close();
 
         Application.Quit();
-
+        SceneManager.LoadScene(0);
     }
     void ButtonActivating()
     {

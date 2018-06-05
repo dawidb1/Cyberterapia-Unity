@@ -15,10 +15,11 @@ public class Menu : MonoBehaviour {
 	{
         Debug.Log("End clicked");
 		SceneManager.LoadScene(0);
-	}
+    }
     public void Exit()
     {
         Debug.Log("Exit?? in Menu clicked");
         SceneManager.LoadScene(0);
+        SceneManager.UnloadScene(2);
     }
 }
