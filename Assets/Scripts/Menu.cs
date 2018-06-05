@@ -20,6 +20,5 @@ public class Menu : MonoBehaviour {
     {
         Debug.Log("Exit?? in Menu clicked");
         SceneManager.LoadScene(0);
-        SceneManager.UnloadScene(2);
     }
 }

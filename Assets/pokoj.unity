@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: d56e30eedf480c14b9d62bcb96536a93,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -496,13 +497,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 418801403}
-  m_LocalRotation: {x: -0.07898995, y: 0.42101026, z: -0.03683364, w: -0.9028589}
-  m_LocalPosition: {x: 4.81, y: 5, z: -2.42}
+  m_LocalRotation: {x: -0.06419658, y: 0.6867796, z: -0.061112236, w: -0.72144157}
+  m_LocalPosition: {x: 9.08, y: 5.67, z: 1.85}
   m_LocalScale: {x: 0.79, y: 0.79, z: 0.79}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 10, y: 310, z: 0}
+  m_LocalEulerAnglesHint: {x: 10.17, y: 272.82, z: 0}
 --- !u!1 &418831420
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,6 +590,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
+--- !u!1 &592078378 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 53828494d35ddad49af6496b9dff6893, type: 3}
+  m_PrefabInternal: {fileID: 1609773289}
+--- !u!135 &592078379
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 592078378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.5846863
+  m_Center: {x: -0.23184812, y: 0.037014484, z: -0.12451601}
 --- !u!1001 &1020773882
 Prefab:
   m_ObjectHideFlags: 0
@@ -1122,6 +1139,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6220227d41f5bca49b5b60e34e845b9e, type: 2}
+    - target: {fileID: 100000, guid: 53828494d35ddad49af6496b9dff6893, type: 3}
+      propertyPath: m_Name
+      value: StickyNotes
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53828494d35ddad49af6496b9dff6893, type: 3}
   m_IsPrefabParent: 0
@@ -1482,7 +1503,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2115206822}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
