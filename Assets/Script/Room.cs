@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 public class Room : MonoBehaviour {
     public GameObject mis;
     GameObject memoryCards;
+    GameObject stickyNotes;
+
 	// Use this for initialization
 	void Start () {
         memoryCards = GameObject.Find("CardHandler");
+        stickyNotes = GameObject.Find("StickyNotes");
 	}
 	
 	// Update is called once per frame
@@ -27,10 +30,15 @@ public class Room : MonoBehaviour {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
                     SceneManager.LoadScene(1);
                 }
-                if (memoryCards.Equals(hit.transform.gameObject))
+                else if (memoryCards.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
                     SceneManager.LoadScene(2);
+                }
+                else if (stickyNotes.Equals(hit.transform.gameObject))
+                {
+                    Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+                    SceneManager.LoadScene(5);
                 }
             }
         }

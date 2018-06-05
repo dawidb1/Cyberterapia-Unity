@@ -1,2 +1,2 @@
-Score: 0;Time: 0:4.47;
+Score: 0;Time: 0:4.35;
 
