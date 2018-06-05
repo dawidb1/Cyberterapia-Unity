@@ -22,7 +22,7 @@ public class UIButton : MonoBehaviour {
 		if (sprite != null) {
 			sprite.color = Color.white;
 		}
-	}
+    }
 
 	public void OnMouseDown()
 	{

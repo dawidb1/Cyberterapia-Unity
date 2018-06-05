@@ -8,10 +8,17 @@ public class Menu : MonoBehaviour {
 
 	public void Play()
 	{
+        Debug.Log("Play clicked");
 		SceneManager.LoadScene("Scene_001");
 	}
 	public void End()
 	{
-		//SceneManager.LoadScene("GameRoom");
+        Debug.Log("End clicked");
+		SceneManager.LoadScene(0);
 	}
+    public void Exit()
+    {
+        Debug.Log("Exit?? in Menu clicked");
+        SceneManager.LoadScene(0);
+    }
 }

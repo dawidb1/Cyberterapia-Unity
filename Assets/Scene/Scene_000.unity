@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efd92217317447948eb313dd913f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 874768983}
   targetMessage: Exit
   highlightColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!1 &2007535629

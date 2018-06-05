@@ -14,6 +14,7 @@ public class End : SceneController {
 	*/
 	public void Exit()
 	{
-		//SceneManager.LoadScene("GameRoom");
+        Debug.Log("Exit?? in End clicked");
+        SceneManager.LoadScene(0);
 	}
 }
