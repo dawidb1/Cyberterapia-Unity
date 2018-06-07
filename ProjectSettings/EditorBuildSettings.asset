@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/StickyNotes/Game2D.unity
     guid: 5e6d2d857c8e9684096a9a26bbaaafdc
+  - enabled: 1
+    path: Assets/SnakeGame/Scenes.unity
+    guid: ea4b018b27385bb4a84db950da3d7f0f
