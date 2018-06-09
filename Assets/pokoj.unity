@@ -673,7 +673,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ecdfe9f0b8508af4d92737c656e36132, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ecdfe9f0b8508af4d92737c656e36132, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1344,6 +1344,10 @@ Prefab:
     - target: {fileID: 100000, guid: 007f2b5fbba72974dbd140a6105dbc82, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 007f2b5fbba72974dbd140a6105dbc82, type: 3}
+      propertyPath: m_Name
+      value: ScoreBoard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 007f2b5fbba72974dbd140a6105dbc82, type: 3}

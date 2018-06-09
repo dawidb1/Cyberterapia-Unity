@@ -8,12 +8,14 @@ public class Room : MonoBehaviour {
     GameObject memoryCards;
     GameObject stickyNotes;
     GameObject snakeHandler;
+    GameObject scoreBoard;
 
     // Use this for initialization
     void Start () {
         memoryCards = GameObject.Find("CardHandler");
         stickyNotes = GameObject.Find("StickyNotes");
         snakeHandler = GameObject.Find("SnakeHandler");
+        scoreBoard = GameObject.Find("ScoreBoard");
 	}
 	
 	// Update is called once per frame
@@ -47,6 +49,11 @@ public class Room : MonoBehaviour {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
                     SceneManager.LoadScene(6);
                 }
+                else if (scoreBoard.Equals(hit.transform.gameObject))
+                {
+                    Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+                    SceneManager.LoadScene(7);
+                }
             }
         }
 
@@ -56,5 +63,10 @@ public class Room : MonoBehaviour {
             yield return new WaitForSeconds(0.5f);
             objTr.localScale /= 1.2f;
         }*/
+    }
+
+    public void GoToRoom()
+    {
+        SceneManager.LoadScene(0);
     }
 }

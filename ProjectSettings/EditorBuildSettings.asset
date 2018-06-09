@@ -26,3 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SnakeGame/Scenes.unity
     guid: ea4b018b27385bb4a84db950da3d7f0f
+  - enabled: 1
+    path: Assets/Scoring/Score Scene.unity
+    guid: 380226282014252429b8dbba43040152
