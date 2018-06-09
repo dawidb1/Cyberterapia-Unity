@@ -27,10 +27,10 @@ public class UIMenager : MonoBehaviour {
     public Button[] buttons;
 
     public List<string> Results;
-    static string PATH = "results.txt";
+  
 
     // Use this for initialization
-    public void Start ()
+    public void Start()
     {
         Debug.Log("Start");
         score = 0;
@@ -39,7 +39,7 @@ public class UIMenager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void Update()
     {
         if (gameOver==false)
         {
@@ -82,8 +82,8 @@ public class UIMenager : MonoBehaviour {
     {
         if (IsBestRecord())
         {
-            WriteToSingleton();
-            WriteToCsv();
+            UpdateSingleton();
+            CsvModel.AddRecordToCsv();
         }
 
         Debug.Log("Replay");
@@ -96,8 +96,8 @@ public class UIMenager : MonoBehaviour {
     {
         if (IsBestRecord())
         {
-            WriteToSingleton();
-            WriteToCsv();
+            UpdateSingleton();
+            CsvModel.AddRecordToCsv();
         }
 
         Debug.Log("dupa");
@@ -110,7 +110,7 @@ public class UIMenager : MonoBehaviour {
             button.gameObject.SetActive(true);
         }
     }
-    void WriteToSingleton()
+    void UpdateSingleton()
     {
         var record = UserSingleton.Instance.StarWarsBest;
         if (score > record)
@@ -128,78 +128,5 @@ public class UIMenager : MonoBehaviour {
         }
         return false;
     }
-    void WriteToCsv()
-    {
-        var currentLine = UserSingleton.Instance.LineInCsv;
-        if (currentLine == 999)
-        {
-            currentLine = File.ReadAllLines(PATH).Length;
-            StreamWriter writer = new StreamWriter(PATH, append: true);
-            var text = CsvEntity() + "\n";
-            writer.WriteLine(text);
-            writer.Close();
-            UserSingleton.Instance.LineInCsv = currentLine;
-        }
-        else
-        {
-            string[] lines = System.IO.File.ReadAllLines(PATH);
-            lines[currentLine] = CsvEntity();
-
-            StreamWriter writer = new StreamWriter(PATH);
-            foreach (var item in lines)
-            {
-                writer.WriteLine(item);
-            }
-            writer.Close();
-        }
-    }
-
-    string CsvEntity()
-    {
-        int sum = UserSingleton.Instance.NotesBest
-            + UserSingleton.Instance.StarWarsBest
-             + UserSingleton.Instance.SnakeBest
-              + UserSingleton.Instance.MemoryBest;
-
-        char semicolon = ';';
-        string entity = UserSingleton.Instance.Username + semicolon
-              + UserSingleton.Instance.NotesBest + semicolon
-              + UserSingleton.Instance.StarWarsBest + semicolon
-              + UserSingleton.Instance.SnakeBest + semicolon
-              + UserSingleton.Instance.MemoryBest + semicolon
-              + sum;
-
-        return entity;
-    }
-
-    //void FindCsvEntity()
-    //{
-    //    StreamReader reader = new StreamReader(PATH);
-    //    List<string> linesList = new List<string>();
-    //    List<CsvModel> entityModelList = new List<CsvModel>();
-
-    //    while (!reader.EndOfStream)
-    //    {
-    //        if (reader.ReadLine() != "")
-    //        {
-    //            linesList.Add(reader.ReadLine());
-    //        }
-    //    }
-    //    foreach (var line in linesList)
-    //    {
-    //        string[] entityArray = line.Split(';');
-    //        entityModelList.Add(new CsvModel(entityArray));
-    //    }
-
-    //    foreach (var user in entityModelList)
-    //    {
-    //        if (user.Name == UserSingleton.Instance.name)
-    //        {
-    //            UserSingleton.Instance.MemoryBest = int.Parse(user.MemoryScore);
-    //            UserSingleton.Instance.NotesBest = int.Parse(user.NotesScore);
-    //            UserSingleton.Instance.SnakeBest = int.Parse(user.SnakeScore);
-    //            UserSingleton.Instance.StarWarsBest = int.Parse(user.StarWarsScore);
-    //        }
-    //    }
-    //}
+   
 }

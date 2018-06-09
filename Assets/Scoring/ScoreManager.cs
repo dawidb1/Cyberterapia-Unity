@@ -104,4 +104,9 @@ public class ScoreManager : MonoBehaviour {
         Debug.Log (GetScore("quill18", "kills") );
 	}
 
+    public void FillFromCsv()
+    {
+
+    }
+
 }
