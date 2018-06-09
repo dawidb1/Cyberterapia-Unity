@@ -85,12 +85,6 @@ public class UIMenager : MonoBehaviour {
             WriteToSingleton();
             WriteToCsv();
         }
-        StreamWriter writer = new StreamWriter(PATH, append: true);
-        foreach (string result in Results)
-        {
-            writer.WriteLine(result + "\r\n");
-        }
-        writer.Close();
 
         Debug.Log("Replay");
         SceneManager.LoadScene(SceneEnum.STAR_WARS.GetHashCode());
@@ -141,16 +135,22 @@ public class UIMenager : MonoBehaviour {
         {
             currentLine = File.ReadAllLines(PATH).Length;
             StreamWriter writer = new StreamWriter(PATH, append: true);
-            writer.WriteLine(CsvEntity()+ "\r\n");
+            var text = CsvEntity() + "\n";
+            writer.WriteLine(text);
             writer.Close();
             UserSingleton.Instance.LineInCsv = currentLine;
         }
         else
         {
             string[] lines = System.IO.File.ReadAllLines(PATH);
-
             lines[currentLine] = CsvEntity();
-            System.IO.File.WriteAllLines(PATH, lines);
+
+            StreamWriter writer = new StreamWriter(PATH);
+            foreach (var item in lines)
+            {
+                writer.WriteLine(item);
+            }
+            writer.Close();
         }
     }
 
