@@ -15,8 +15,9 @@ public class MemoryEnd : SceneController {
 	*/
     public void Exit()
     {
-        Debug.Log("Exit?? in End clicked");
 
         SceneManager.LoadScene((int)SceneEnum.ROOM, LoadSceneMode.Single);
     }
+
+
 }

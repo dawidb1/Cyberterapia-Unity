@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Csv;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,7 +43,11 @@ public class LVLUP : MonoBehaviour {
             Image.SetActive(true);
             Score.SetActive(true);
 
-            UserSingleton.Instance.NotesBest = RandomLetters.RESULT;
+            if (IsBestRecord())
+            {
+                UpdateSingleton();
+                CsvSnapshot.AddRecordToCsv();
+            }
             if (RandomLetters.LVL == 6)
             {
                 Score.GetComponent<Text>().text = "GRATULACJE! Uzyskałeś maksymalną ilość punktów!";
@@ -54,5 +59,23 @@ public class LVLUP : MonoBehaviour {
             // WYNIKI W RESULT 
             //return RESULT
         }
+    }
+    void UpdateSingleton()
+    {
+        var record = UserSingleton.Instance.NotesBest;
+        if (RandomLetters.RESULT > record)
+        {
+            UserSingleton.Instance.NotesBest = RandomLetters.RESULT;
+        }
+    }
+
+    bool IsBestRecord()
+    {
+        var best = UserSingleton.Instance.NotesBest;
+        if (RandomLetters.RESULT > best)
+        {
+            return true;
+        }
+        return false;
     }
 }

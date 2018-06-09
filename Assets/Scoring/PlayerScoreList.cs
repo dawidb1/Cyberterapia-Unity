@@ -57,8 +57,7 @@ public class PlayerScoreList : MonoBehaviour {
             go.transform.SetParent(this.transform);
             go.transform.Find("Username").GetComponent<Text>().text = user.Name;
 
-            go.transform.Find("Assists").GetComponent<Text>().text = scoreManager.GetScore(name, "assists").ToString();
-
+            go.transform.Find("Memory").GetComponent<Text>().text = user.MemoryScore;
             go.transform.Find("StarWars").GetComponent<Text>().text = user.StarWarsScore;
             go.transform.Find("Snake").GetComponent<Text>().text = user.SnakeScore;
             go.transform.Find("Notes").GetComponent<Text>().text = user.NotesScore;

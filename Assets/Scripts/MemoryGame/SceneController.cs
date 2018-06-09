@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Csv;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -83,7 +84,11 @@ public class SceneController : MonoBehaviour {
 			pair++;
 			if (pair == 9) {
                 Debug.Log("memory score saved");
-                writeToSingleton();
+                if (IsBestRecord())
+                {
+                    UpdateSingleton();
+                    CsvSnapshot.AddRecordToCsv();
+                }
                 SceneManager.LoadScene("Scene_002");
 			}
 		} 
@@ -110,12 +115,22 @@ public class SceneController : MonoBehaviour {
 		SceneManager.LoadScene("Scene_000");
 	}
 
-    void writeToSingleton()
+    void UpdateSingleton()
     {
         var record = UserSingleton.Instance.MemoryBest;
         if (score > record)
         {
             UserSingleton.Instance.MemoryBest = score;
         }
+    }
+
+    bool IsBestRecord()
+    {
+        var best = UserSingleton.Instance.MemoryBest;
+        if (score > best)
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -103,6 +103,7 @@ public class UIMenager : MonoBehaviour {
 
         Debug.Log("dupa");
         SceneManager.LoadScene(SceneEnum.ROOM.GetHashCode(),LoadSceneMode.Single);
+        Destroy(gameObject); //todo check it
     }
     void ButtonActivating()
     {
