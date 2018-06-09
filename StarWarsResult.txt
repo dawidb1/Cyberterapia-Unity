@@ -6,3 +6,29 @@ Score: 14;Time: 0:23.74;
 
 Score: 3;Time: 0:8.46;
 
+Score: 4;Time: 0:9.76;
+
+Score: 24;Time: 0:38.36;
+
+Score: 0;Time: 0:4.34;
+
+Score: 11;Time: 0:19.29;
+
+Score: 1;Time: 0:6.96;
+
+Score: 1;Time: 0:6.42;
+
+Score: 12;Time: 0:20.92;
+
+Score: 1;Time: 0:6.24;
+
+;;
+
+Score: 5;Time: 0:11.09;
+
+Score: 6;Time: 0:12.57;
+
+Score: 0;Time: 0:4.55;
+
+Score: 0;Time: 0:4.47;
+

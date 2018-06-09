@@ -10,6 +10,8 @@ public class UserSingleton : MonoBehaviour {
     public int SnakeBest;
     public int NotesBest;
     public int StarWarsBest;
+    public int MemoryBest;
+    public int LineInCsv;
 
     private void Awake()
     {
@@ -22,6 +24,15 @@ public class UserSingleton : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+    }
+    public void Reset()
+    {
+        UserSingleton.Instance.Username = "noname";
+        UserSingleton.Instance.LineInCsv = 999;
+        UserSingleton.Instance.MemoryBest = 0;
+        UserSingleton.Instance.NotesBest = 0;
+        UserSingleton.Instance.SnakeBest = 0;
+        UserSingleton.Instance.StarWarsBest = 0;
     }
 
 }

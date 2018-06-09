@@ -34,27 +34,27 @@ public class Room : MonoBehaviour {
                 if (mis.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                    SceneManager.LoadScene(1);
+                    SceneManager.LoadScene(2);
                 }
                 else if (memoryCards.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                    SceneManager.LoadScene(2);
+                    SceneManager.LoadScene(3);
                 }
                 else if (stickyNotes.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                    SceneManager.LoadScene(5);
+                    SceneManager.LoadScene(6);
                 }
                 else if (snakeHandler.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                    SceneManager.LoadScene(6);
+                    SceneManager.LoadScene(7);
                 }
                 else if (scoreBoard.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                    SceneManager.LoadScene(7);
+                    SceneManager.LoadScene(8);
                 }
                 else if (usernameHandler.Equals(hit.transform.gameObject))
                 {

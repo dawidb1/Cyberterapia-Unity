@@ -41,10 +41,16 @@ public class LVLUP : MonoBehaviour {
             ButtonExit.SetActive(true);
             Image.SetActive(true);
             Score.SetActive(true);
-            if(RandomLetters.LVL ==6)
+
+            UserSingleton.Instance.NotesBest = RandomLetters.RESULT;
+            if (RandomLetters.LVL == 6)
+            {
                 Score.GetComponent<Text>().text = "GRATULACJE! Uzyskałeś maksymalną ilość punktów!";
+            }
             else
+            {
                 Score.GetComponent<Text>().text = " Uzyskałeś " + RandomLetters.RESULT + " na 6 możliwych punktów!";
+            }
             // WYNIKI W RESULT 
             //return RESULT
         }

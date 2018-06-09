@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
+using Assets;
+
 public class UIMenager : MonoBehaviour {
     //Brajan&Patryk
     public static bool gameOver = false;
@@ -19,18 +21,16 @@ public class UIMenager : MonoBehaviour {
         get { return score; }
         set { score = value; }
     }
-
     string EndTime;
     string EndScore;
-
 
     public Button[] buttons;
 
     public List<string> Results;
-   
+    static string PATH = "results.txt";
 
-	// Use this for initialization
-	public void Start ()
+    // Use this for initialization
+    public void Start ()
     {
         Debug.Log("Start");
         score = 0;
@@ -80,7 +80,12 @@ public class UIMenager : MonoBehaviour {
 
     public void Replay()
     {
-        StreamWriter writer = new StreamWriter("StarWarsResult.txt", append: true);
+        if (IsBestRecord())
+        {
+            WriteToSingleton();
+            WriteToCsv();
+        }
+        StreamWriter writer = new StreamWriter(PATH, append: true);
         foreach (string result in Results)
         {
             writer.WriteLine(result + "\r\n");
@@ -88,22 +93,21 @@ public class UIMenager : MonoBehaviour {
         writer.Close();
 
         Debug.Log("Replay");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneEnum.STAR_WARS.GetHashCode());
         
         gameOver = false;
         ShipSpawner.Speed = -5f;
     }
     public void Exit()
     {
-        StreamWriter writer = new StreamWriter("StarWarsResult.txt", append: true);
-        foreach (string result in Results)
+        if (IsBestRecord())
         {
-            writer.WriteLine(result+"\r\n");
+            WriteToSingleton();
+            WriteToCsv();
         }
-        writer.Close();
 
         Debug.Log("dupa");
-        SceneManager.LoadScene(0,LoadSceneMode.Single);
+        SceneManager.LoadScene(SceneEnum.ROOM.GetHashCode(),LoadSceneMode.Single);
     }
     void ButtonActivating()
     {
@@ -112,4 +116,90 @@ public class UIMenager : MonoBehaviour {
             button.gameObject.SetActive(true);
         }
     }
+    void WriteToSingleton()
+    {
+        var record = UserSingleton.Instance.StarWarsBest;
+        if (score > record)
+        {
+            UserSingleton.Instance.StarWarsBest = score;
+        }
+    }
+
+    bool IsBestRecord()
+    {
+        var best = UserSingleton.Instance.StarWarsBest;
+        if (score > best)
+        {
+            return true;
+        }
+        return false;
+    }
+    void WriteToCsv()
+    {
+        var currentLine = UserSingleton.Instance.LineInCsv;
+        if (currentLine == 999)
+        {
+            currentLine = File.ReadAllLines(PATH).Length;
+            StreamWriter writer = new StreamWriter(PATH, append: true);
+            writer.WriteLine(CsvEntity()+ "\r\n");
+            writer.Close();
+            UserSingleton.Instance.LineInCsv = currentLine;
+        }
+        else
+        {
+            string[] lines = System.IO.File.ReadAllLines(PATH);
+
+            lines[currentLine] = CsvEntity();
+            System.IO.File.WriteAllLines(PATH, lines);
+        }
+    }
+
+    string CsvEntity()
+    {
+        int sum = UserSingleton.Instance.NotesBest
+            + UserSingleton.Instance.StarWarsBest
+             + UserSingleton.Instance.SnakeBest
+              + UserSingleton.Instance.MemoryBest;
+
+        char semicolon = ';';
+        string entity = UserSingleton.Instance.Username + semicolon
+              + UserSingleton.Instance.NotesBest + semicolon
+              + UserSingleton.Instance.StarWarsBest + semicolon
+              + UserSingleton.Instance.SnakeBest + semicolon
+              + UserSingleton.Instance.MemoryBest + semicolon
+              + sum;
+
+        return entity;
+    }
+
+    //void FindCsvEntity()
+    //{
+    //    StreamReader reader = new StreamReader(PATH);
+    //    List<string> linesList = new List<string>();
+    //    List<CsvModel> entityModelList = new List<CsvModel>();
+
+    //    while (!reader.EndOfStream)
+    //    {
+    //        if (reader.ReadLine() != "")
+    //        {
+    //            linesList.Add(reader.ReadLine());
+    //        }
+    //    }
+    //    foreach (var line in linesList)
+    //    {
+    //        string[] entityArray = line.Split(';');
+    //        entityModelList.Add(new CsvModel(entityArray));
+    //    }
+
+    //    foreach (var user in entityModelList)
+    //    {
+    //        if (user.Name == UserSingleton.Instance.name)
+    //        {
+    //            UserSingleton.Instance.MemoryBest = int.Parse(user.MemoryScore);
+    //            UserSingleton.Instance.NotesBest = int.Parse(user.NotesScore);
+    //            UserSingleton.Instance.SnakeBest = int.Parse(user.SnakeScore);
+    //            UserSingleton.Instance.StarWarsBest = int.Parse(user.StarWarsScore);
+    //        }
+    //    }
+    //}
 }

@@ -52,6 +52,7 @@ public class SceneController : MonoBehaviour {
 	private MainCard _firstRevealed;
 	private MainCard _secondRevealed;
 
+    int endScore;
 	protected int score = 0;
 	private int pair = 0;
 
@@ -81,7 +82,9 @@ public class SceneController : MonoBehaviour {
 		{
 			pair++;
 			if (pair == 9) {
-				SceneManager.LoadScene ("Scene_002");
+                Debug.Log("memory score saved");
+                writeToSingleton();
+                SceneManager.LoadScene("Scene_002");
 			}
 		} 
 		else 
@@ -98,6 +101,7 @@ public class SceneController : MonoBehaviour {
 
 	public void Restart()
 	{
+        Destroy(gameObject);
 		SceneManager.LoadScene("Scene_001");
 	}
 
@@ -105,4 +109,13 @@ public class SceneController : MonoBehaviour {
 	{
 		SceneManager.LoadScene("Scene_000");
 	}
+
+    void writeToSingleton()
+    {
+        var record = UserSingleton.Instance.MemoryBest;
+        if (score > record)
+        {
+            UserSingleton.Instance.MemoryBest = score;
+        }
+    }
 }
