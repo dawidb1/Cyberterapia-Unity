@@ -37,15 +37,26 @@ public class PlayerScoreList : MonoBehaviour {
 			Destroy (c.gameObject);
 		}
 
-		string[] names = scoreManager.GetPlayerNames("kills");
+		string[] names = scoreManager.GetPlayerNames("username");
 		
 		foreach(string name in names) {
 			GameObject go = (GameObject)Instantiate(playerScoreEntryPrefab);
 			go.transform.SetParent(this.transform);
-			go.transform.Find ("Username").GetComponent<Text>().text = name;
-			go.transform.Find ("Kills").GetComponent<Text>().text = scoreManager.GetScore(name, "kills").ToString();
-			go.transform.Find ("Deaths").GetComponent<Text>().text = scoreManager.GetScore(name, "deaths").ToString();
-			go.transform.Find ("Assists").GetComponent<Text>().text = scoreManager.GetScore(name, "assists").ToString();
-		}
-	}
+            go.transform.Find("Username").GetComponent<Text>().text = name;
+
+            int starWarsScore = scoreManager.GetScore(name, "starWars");
+            int snakeScore = scoreManager.GetScore(name, "snake");
+            int notesScore = scoreManager.GetScore(name, "stickyNotes");
+            var suma = starWarsScore + snakeScore + notesScore;
+
+            //         go.transform.Find("Kills").GetComponent<Text>().text = scoreManager.GetScore(name, "kills").ToString();
+            //go.transform.Find ("Deaths").GetComponent<Text>().text = scoreManager.GetScore(name, "deaths").ToString();
+            go.transform.Find ("Assists").GetComponent<Text>().text = scoreManager.GetScore(name, "assists").ToString();
+
+            go.transform.Find("StarWars").GetComponent<Text>().text = starWarsScore.ToString();
+            go.transform.Find("Snake").GetComponent<Text>().text = snakeScore.ToString();
+            go.transform.Find("Notes").GetComponent<Text>().text = notesScore.ToString();
+            go.transform.Find("Suma").GetComponent<Text>().text = suma.ToString();
+        }
+    }
 }

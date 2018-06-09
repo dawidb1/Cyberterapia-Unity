@@ -14,7 +14,8 @@ public class ScoreManager : MonoBehaviour {
 	int changeCounter = 0;
 
 	void Start() {
-	}
+
+    }
 
 	void Init() {
 		if(playerScores != null)
@@ -77,22 +78,30 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void DEBUG_ADD_KILL_TO_QUILL() {
-		ChangeScore("quill18", "kills", 1);
-	}
+        SetScore("bob", "starWars", 33);
+    }
 	
 	public void DEBUG_INITIAL_SETUP() {
-		SetScore("quill18", "kills", 0);
-		SetScore("quill18", "assists", 345);
+		SetScore("quill18", "starWars", 0);
+		SetScore("quill18", "stickyNotes", 345);
 		
-		SetScore("bob", "kills", 1000);
-		SetScore("bob", "deaths", 14345);
+		SetScore("annie", "snake", 1000);
+		SetScore("annie", "stickyNotes", 14345);
 		
 		SetScore("AAAAAA", "kills", 3);
 		SetScore("BBBBBB", "kills", 2);
 		SetScore("CCCCCC", "kills", 1);
-		
-		
-		Debug.Log (  GetScore("quill18", "kills") );
+
+        SetScore("bob", "snake", 1000);
+        SetScore("bob", "stickyNotes", 14345);
+        SetScore("bob", "starWars", 33);
+
+        SetScore("adriana", "snake", 2222);
+        SetScore("adriana", "stickyNotes", 3332);
+        SetScore("adriana", "starWars", 14424);
+
+
+        Debug.Log (GetScore("quill18", "kills") );
 	}
 
 }

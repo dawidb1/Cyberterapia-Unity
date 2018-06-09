@@ -9,6 +9,7 @@ public class Room : MonoBehaviour {
     GameObject stickyNotes;
     GameObject snakeHandler;
     GameObject scoreBoard;
+    GameObject usernameHandler;
 
     // Use this for initialization
     void Start () {
@@ -16,7 +17,8 @@ public class Room : MonoBehaviour {
         stickyNotes = GameObject.Find("StickyNotes");
         snakeHandler = GameObject.Find("SnakeHandler");
         scoreBoard = GameObject.Find("ScoreBoard");
-	}
+        usernameHandler = GameObject.Find("UsernameHandler");
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -53,6 +55,11 @@ public class Room : MonoBehaviour {
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
                     SceneManager.LoadScene(7);
+                }
+                else if (usernameHandler.Equals(hit.transform.gameObject))
+                {
+                    Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+                    SceneManager.LoadScene(0);
                 }
             }
         }

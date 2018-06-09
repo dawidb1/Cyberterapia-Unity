@@ -30,7 +30,7 @@ public class UIMenager : MonoBehaviour {
    
 
 	// Use this for initialization
-	void Start ()
+	public void Start ()
     {
         Debug.Log("Start");
         score = 0;
@@ -41,7 +41,6 @@ public class UIMenager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        Debug.Log("update");
         if (gameOver==false)
         {
             float t = Time.time - startTime;
@@ -54,23 +53,26 @@ public class UIMenager : MonoBehaviour {
         }
         else
         {
+         
             scoreText.text = EndScore;
             TimeText.text = EndTime;
             ButtonActivating();
 
-
-            if (Results.Count==0)
+            if (EndScore != string.Empty && EndTime != string.Empty)
             {
-                string result = EndScore + ";" + EndTime + ";";
-                Results.Add(result);
-
-            }
-            else
-            {
-                if ((EndScore + ";" + EndTime + ";") != Results[Results.Count - 1])
+                if (Results.Count == 0)
                 {
                     string result = EndScore + ";" + EndTime + ";";
                     Results.Add(result);
+
+                }
+                else
+                {
+                    if ((EndScore + ";" + EndTime + ";") != Results[Results.Count - 1])
+                    {
+                        string result = EndScore + ";" + EndTime + ";";
+                        Results.Add(result);
+                    }
                 }
             }
         }
@@ -78,6 +80,13 @@ public class UIMenager : MonoBehaviour {
 
     public void Replay()
     {
+        StreamWriter writer = new StreamWriter("StarWarsResult.txt", append: true);
+        foreach (string result in Results)
+        {
+            writer.WriteLine(result + "\r\n");
+        }
+        writer.Close();
+
         Debug.Log("Replay");
         SceneManager.LoadScene(1);
         
@@ -86,14 +95,15 @@ public class UIMenager : MonoBehaviour {
     }
     public void Exit()
     {
-        StreamWriter writer = new StreamWriter("results.txt");
+        StreamWriter writer = new StreamWriter("StarWarsResult.txt", append: true);
         foreach (string result in Results)
         {
             writer.WriteLine(result+"\r\n");
         }
         writer.Close();
 
-        SceneManager.LoadScene(0);
+        Debug.Log("dupa");
+        SceneManager.LoadScene(0,LoadSceneMode.Single);
     }
     void ButtonActivating()
     {
@@ -102,5 +112,4 @@ public class UIMenager : MonoBehaviour {
             button.gameObject.SetActive(true);
         }
     }
-
 }

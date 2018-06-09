@@ -1,0 +1,8 @@
+Score: 0;Time: 0:4.47;
+
+Score: 1;Time: 0:6.76;
+
+Score: 14;Time: 0:23.74;
+
+Score: 3;Time: 0:8.46;
+

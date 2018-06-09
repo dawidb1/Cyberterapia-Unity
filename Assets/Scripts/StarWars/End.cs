@@ -15,6 +15,7 @@ public class End : SceneController {
 	public void Exit()
 	{
         Debug.Log("Exit?? in End clicked");
-        SceneManager.LoadScene(0);
+        
+        SceneManager.LoadScene(0,LoadSceneMode.Single);
 	}
 }
