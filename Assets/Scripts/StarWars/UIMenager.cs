@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
 using Assets;
+using Assets.Scripts.Csv;
 
 public class UIMenager : MonoBehaviour {
     //Brajan&Patryk
@@ -83,7 +84,7 @@ public class UIMenager : MonoBehaviour {
         if (IsBestRecord())
         {
             UpdateSingleton();
-            CsvModel.AddRecordToCsv();
+            CsvSnapshot.AddRecordToCsv();
         }
 
         Debug.Log("Replay");
@@ -97,7 +98,7 @@ public class UIMenager : MonoBehaviour {
         if (IsBestRecord())
         {
             UpdateSingleton();
-            CsvModel.AddRecordToCsv();
+            CsvSnapshot.AddRecordToCsv();
         }
 
         Debug.Log("dupa");

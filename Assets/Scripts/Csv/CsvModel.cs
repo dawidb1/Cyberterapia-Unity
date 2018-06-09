@@ -5,63 +5,17 @@ using UnityEngine;
 
 public class CsvModel {
 
-    public static void AddRecordToCsv()
-    {
-        string PATH = "results.txt";
-        var NEW_LINE = "\n";
-        var ABSTRACT_LINE = 999;
-
-        var currentLine = UserSingleton.Instance.LineInCsv;
-        if (currentLine == ABSTRACT_LINE)
-        {
-            currentLine = File.ReadAllLines(PATH).Length;
-            StreamWriter writer = new StreamWriter(PATH, append: true);
-            var text = CsvLineFromSingleton() + NEW_LINE;
-            writer.WriteLine(text);
-            writer.Close();
-            UserSingleton.Instance.LineInCsv = currentLine;
-        }
-        else
-        {
-            string[] lines = System.IO.File.ReadAllLines(PATH);
-            lines[currentLine] = CsvLineFromSingleton();
-
-            StreamWriter writer = new StreamWriter(PATH);
-            foreach (var item in lines)
-            {
-                writer.WriteLine(item);
-            }
-            writer.Close();
-        }
-    }
-    public static string CsvLineFromSingleton()
-    {
-        int sum = UserSingleton.Instance.NotesBest
-          + UserSingleton.Instance.StarWarsBest
-           + UserSingleton.Instance.SnakeBest
-            + UserSingleton.Instance.MemoryBest;
-
-        char semicolon = ';';
-        string entity = UserSingleton.Instance.Username + semicolon
-              + UserSingleton.Instance.NotesBest + semicolon
-              + UserSingleton.Instance.StarWarsBest + semicolon
-              + UserSingleton.Instance.SnakeBest + semicolon
-              + UserSingleton.Instance.MemoryBest + semicolon
-              + sum;
-
-        return entity;
-    }
-
-    public CsvModel(string[] entityArray): this(entityArray[0], entityArray[1], entityArray[2],entityArray[3], entityArray[4])
+    public CsvModel(string[] entityArray): this(entityArray[0], entityArray[1], entityArray[2],entityArray[3], entityArray[4], entityArray[5])
     {
     }
-    public CsvModel(string name, string notes, string starWars, string snake, string memory)
+    public CsvModel(string name, string notes, string starWars, string snake, string memory, string suma)
     {
         Name = name;
         NotesScore = notes;
         StarWarsScore = starWars;
         SnakeScore = snake;
         MemoryScore = memory;
+        Suma = suma;
     }
     public CsvModel(string entity)
     {
@@ -73,14 +27,17 @@ public class CsvModel {
         StarWarsScore = entityArray[2];
         SnakeScore = entityArray[3];
         MemoryScore = entityArray[4];
+        Suma = entityArray[5];
+
     }
     public CsvModel()
     {
         Name = "noname";
-        NotesScore = "";
-        StarWarsScore = "";
-        SnakeScore = "";
-        MemoryScore = "";
+        NotesScore = "00";
+        StarWarsScore = "00";
+        SnakeScore = "00";
+        MemoryScore = "00";
+        Suma = "00";
     }
 
     public string Name { get; set; }
@@ -88,4 +45,5 @@ public class CsvModel {
     public string StarWarsScore { get; set; }
     public string SnakeScore { get; set; }
     public string MemoryScore { get; set; }
+    public string Suma { get; set; }
 }

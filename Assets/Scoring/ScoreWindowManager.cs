@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScoreWindowManager : MonoBehaviour {
@@ -18,6 +19,6 @@ public class ScoreWindowManager : MonoBehaviour {
 
     public void BackToRoom()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene((int)SceneEnum.ROOM);
     }
 }

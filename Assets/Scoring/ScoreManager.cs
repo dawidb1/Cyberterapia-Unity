@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using Assets.Scripts.Csv;
 
 public class ScoreManager : MonoBehaviour {
 
@@ -56,7 +58,8 @@ public class ScoreManager : MonoBehaviour {
 		playerScores[username][scoreType] = value;
 	}
 
-	public void ChangeScore(string username, string scoreType, int amount) {
+
+    public void ChangeScore(string username, string scoreType, int amount) {
 		Init ();
 		int currScore = GetScore(username, scoreType);
 		SetScore(username, scoreType, currScore + amount);
@@ -104,9 +107,6 @@ public class ScoreManager : MonoBehaviour {
         Debug.Log (GetScore("quill18", "kills") );
 	}
 
-    public void FillFromCsv()
-    {
-
-    }
+ 
 
 }

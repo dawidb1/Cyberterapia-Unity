@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Assets.Scripts.Csv;
+using System.Collections.Generic;
+using System.Linq;
 
 public class PlayerScoreList : MonoBehaviour {
 
@@ -15,6 +18,8 @@ public class PlayerScoreList : MonoBehaviour {
 		scoreManager = GameObject.FindObjectOfType<ScoreManager>();
 
 		lastChangeCounter = scoreManager.GetChangeCounter();
+        scoreManager.Reset();
+        FillFromCsv();
 	}
 	
 	// Update is called once per frame
@@ -37,26 +42,27 @@ public class PlayerScoreList : MonoBehaviour {
 			Destroy (c.gameObject);
 		}
 
-		string[] names = scoreManager.GetPlayerNames("username");
-		
-		foreach(string name in names) {
-			GameObject go = (GameObject)Instantiate(playerScoreEntryPrefab);
-			go.transform.SetParent(this.transform);
-            go.transform.Find("Username").GetComponent<Text>().text = name;
+        FillFromCsv();
+    }
 
-            int starWarsScore = scoreManager.GetScore(name, "starWars");
-            int snakeScore = scoreManager.GetScore(name, "snake");
-            int notesScore = scoreManager.GetScore(name, "stickyNotes");
-            var suma = starWarsScore + snakeScore + notesScore;
+    public void FillFromCsv()
+    {
+        Debug.Log("Fill from csv");
+        List<CsvModel> allEntries = CsvSnapshot.GetRecordList();
+        var orderBySuma = allEntries.OrderByDescending(x => int.Parse(x.Suma));   //todo fuj
 
-            //         go.transform.Find("Kills").GetComponent<Text>().text = scoreManager.GetScore(name, "kills").ToString();
-            //go.transform.Find ("Deaths").GetComponent<Text>().text = scoreManager.GetScore(name, "deaths").ToString();
-            go.transform.Find ("Assists").GetComponent<Text>().text = scoreManager.GetScore(name, "assists").ToString();
+        foreach (var user in orderBySuma)
+        {
+            GameObject go = (GameObject)Instantiate(playerScoreEntryPrefab);
+            go.transform.SetParent(this.transform);
+            go.transform.Find("Username").GetComponent<Text>().text = user.Name;
 
-            go.transform.Find("StarWars").GetComponent<Text>().text = starWarsScore.ToString();
-            go.transform.Find("Snake").GetComponent<Text>().text = snakeScore.ToString();
-            go.transform.Find("Notes").GetComponent<Text>().text = notesScore.ToString();
-            go.transform.Find("Suma").GetComponent<Text>().text = suma.ToString();
+            go.transform.Find("Assists").GetComponent<Text>().text = scoreManager.GetScore(name, "assists").ToString();
+
+            go.transform.Find("StarWars").GetComponent<Text>().text = user.StarWarsScore;
+            go.transform.Find("Snake").GetComponent<Text>().text = user.SnakeScore;
+            go.transform.Find("Notes").GetComponent<Text>().text = user.NotesScore;
+            go.transform.Find("Suma").GetComponent<Text>().text = user.Suma;
         }
     }
 }
