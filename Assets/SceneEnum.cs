@@ -12,6 +12,8 @@ namespace Assets
         MEMORY_GAME = 3,
         STAR_WARS = 2,
         SNAKE = 7,
-        STICKY_NOTES = 6
+        STICKY_NOTES = 6,
+        SCORE_BOARD = 8
+           
     }
 }

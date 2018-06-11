@@ -19,7 +19,10 @@ namespace Assets.Scripts.Csv
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
-                AllEntries.Add(new CsvModel(line));
+                if (line!=null && line != string.Empty)
+                {
+                    AllEntries.Add(new CsvModel(line));
+                }
             }
             return AllEntries;
         }

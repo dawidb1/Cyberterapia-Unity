@@ -19,16 +19,22 @@ public class CsvModel {
     }
     public CsvModel(string entity)
     {
-        string[] entityArray = entity.Split(';');
+        if (entity == string.Empty)
+        {
+            Debug.Log("empty string");
+        }
+        else
+        {
+            string[] entityArray = entity.Split(';');
 
-        Name = entityArray[0];
+            Name = entityArray[0];
 
-        NotesScore = entityArray[1];
-        StarWarsScore = entityArray[2];
-        SnakeScore = entityArray[3];
-        MemoryScore = entityArray[4];
-        Suma = entityArray[5];
-
+            NotesScore = entityArray[1];
+            StarWarsScore = entityArray[2];
+            SnakeScore = entityArray[3];
+            MemoryScore = entityArray[4];
+            Suma = entityArray[5];
+        }
     }
     public CsvModel()
     {
