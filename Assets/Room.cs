@@ -1,24 +1,27 @@
-﻿using System.Collections;
+﻿using Assets;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Room : MonoBehaviour {
-    GameObject mis;
+    GameObject starWars;
     GameObject memoryCards;
     GameObject stickyNotes;
     GameObject snakeHandler;
     GameObject scoreBoard;
     GameObject usernameHandler;
+    GameObject exit;
 
     // Use this for initialization
     void Start () {
-        mis = GameObject.Find("miś");
+        starWars = GameObject.Find("StarWarsHandler");
         memoryCards = GameObject.Find("CardHandler");
         stickyNotes = GameObject.Find("StickyNotes");
         snakeHandler = GameObject.Find("SnakeHandler");
-        scoreBoard = GameObject.Find("tablica");
+        scoreBoard = GameObject.Find("ScoreBoard");
         usernameHandler = GameObject.Find("UsernameHandler");
+        exit = GameObject.Find("wyjscie");
     }
 	
 	// Update is called once per frame
@@ -32,35 +35,42 @@ public class Room : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 //StartCoroutine(ScaleMe(hit.transform));
-                if (mis.Equals(hit.transform.gameObject))
+                if (starWars.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                    SceneManager.LoadScene(2);
+                    SceneManager.LoadScene((int)SceneEnum.STAR_WARS);
                 }
                 else if (memoryCards.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                    SceneManager.LoadScene(3);
+                    SceneManager.LoadScene((int)SceneEnum.MEMORY_GAME);
                 }
                 else if (stickyNotes.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                    SceneManager.LoadScene(6);
+                    SceneManager.LoadScene((int)SceneEnum.STICKY_NOTES);
                 }
                 else if (snakeHandler.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                    SceneManager.LoadScene(7);
+                    SceneManager.LoadScene((int)SceneEnum.SNAKE);
                 }
+                
                 else if (scoreBoard.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                    SceneManager.LoadScene(8);
+                    SceneManager.LoadScene((int)SceneEnum.SCORE_BOARD);
                 }
                 else if (usernameHandler.Equals(hit.transform.gameObject))
                 {
                     Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                    SceneManager.LoadScene(0);
+                    SceneManager.LoadScene((int)SceneEnum.USER_LOGIN);
+                }
+                else if (exit.Equals(hit.transform.gameObject))
+                {
+                    Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+                    Application.Quit();
+                    Debug.Log("You sdafdsafdsafd the " + hit.transform.name);
                 }
             }
         }
@@ -75,6 +85,6 @@ public class Room : MonoBehaviour {
 
     public void GoToRoom()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene((int)SceneEnum.ROOM);
     }
 }
