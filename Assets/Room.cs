@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Room : MonoBehaviour {
-    public GameObject mis;
+    GameObject mis;
     GameObject memoryCards;
     GameObject stickyNotes;
     GameObject snakeHandler;
@@ -13,10 +13,11 @@ public class Room : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        mis = GameObject.Find("miś");
         memoryCards = GameObject.Find("CardHandler");
         stickyNotes = GameObject.Find("StickyNotes");
         snakeHandler = GameObject.Find("SnakeHandler");
-        scoreBoard = GameObject.Find("ScoreBoard");
+        scoreBoard = GameObject.Find("tablica");
         usernameHandler = GameObject.Find("UsernameHandler");
     }
 	
