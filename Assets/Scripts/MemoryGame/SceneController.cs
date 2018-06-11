@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
 
-	public const int gridRows = 3;
-	public const int gridCols = 6;
+	public const int gridRows = 4;
+	public const int gridCols = 4;
 	public const float offsetX = 3f;
-	public const float offsetY = 3f;
+	public const float offsetY = 2.6f;
 
 	[SerializeField] private MainCard orginalCard;
 	[SerializeField] private Sprite[] images;
@@ -17,7 +17,7 @@ public class SceneController : MonoBehaviour {
 	private void Start()
 	{
 		Vector3 startPos = orginalCard.transform.position;
-		int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8 };
+		int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7};
 		numbers = ShuffleArray (numbers);
 
 		for (int i = 0; i < gridCols; i++) {
@@ -82,14 +82,14 @@ public class SceneController : MonoBehaviour {
 		if (_firstRevealed.id == _secondRevealed.id) 
 		{
 			pair++;
-			if (pair == 9) {
+			if (pair == 8) {
+				SceneManager.LoadScene("Scene_002");
                 Debug.Log("memory score saved");
                 if (IsBestRecord())
                 {
                     UpdateSingleton();
                     CsvSnapshot.AddRecordToCsv();
                 }
-                SceneManager.LoadScene("Scene_002");
 			}
 		} 
 		else 
