@@ -18,8 +18,8 @@ public class MyTimer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		czas_txt= gameObject.GetComponent<Text>();
+		//czas_txt = gameObject.GetComponent<Text>();
 		czas += Time.deltaTime;
-		czas_txt.text=string.Format("czas: {0}",czas);
+		czas_txt.text=string.Format("czas: {0}", System.Math.Round(czas,1));
 	}
 }
