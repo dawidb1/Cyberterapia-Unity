@@ -17,11 +17,11 @@ public class TextureChanger : MonoBehaviour
 			
 			for(int i = 0; i < DiffuseTexture1.Length; i++)
 			{
-				DiffuseTexture1[i].active = true;
+                DiffuseTexture1[i].SetActive(true);
 			}
 			for(int j = 0; j < ParallaxTexture1.Length; j++)
 			{
-				ParallaxTexture1[j].active = false;
+                ParallaxTexture1[j].SetActive(false);
 			}
 			
 
@@ -31,11 +31,11 @@ public class TextureChanger : MonoBehaviour
 
 			for(int i = 0; i < DiffuseTexture1.Length; i++)
 			{
-				DiffuseTexture1[i].active = false;
+                DiffuseTexture1[i].SetActive(false);
 			}
 			for(int j = 0; j < ParallaxTexture1.Length; j++)
 			{
-				ParallaxTexture1[j].active = true;
+                ParallaxTexture1[j].SetActive(true);
 			}
 
 		}

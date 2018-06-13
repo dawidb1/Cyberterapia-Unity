@@ -24,7 +24,7 @@ public class destroy2 : MonoBehaviour
     {
         //Debug.Log("Exit?? in End clicked");
         //SceneManager.LoadScene(0);
-        Application.Quit();
+        //Application.Quit();
 
         PlayerPrefs.SetFloat("Highscore", MyTimer.czas);
 
@@ -63,17 +63,20 @@ public class destroy2 : MonoBehaviour
             CsvSnapshot.AddRecordToCsv();
         }
 
-        Score.GetComponentInChildren<Text>().text = string.Format("Wynik: {0}", EndScore);
         Score.gameObject.SetActive(true);
+        Score.GetComponentInChildren<Text>().text = string.Format("Wynik: {0}", EndScore);
+        Score.onClick.AddListener(GoToRoom);
 
     }
 
     public void GoToRoom()
     {
         //System.Threading.Thread.Sleep(1000);
-        SceneManager.LoadScene((int)SceneEnum.ROOM);
-        //Destroy(other.gameObject);
-        Destroy(GameObject.Find("Canvas"));
+        //Destroy(gameObject);
+        //Destroy(GameObject.Find("Canvas"));
+        SceneManager.LoadScene((int)SceneEnum.ROOM,LoadSceneMode.Single);
+        //Application.LoadLevel((int)SceneEnum.ROOM);
+
     }
 
     void UpdateSingleton()
