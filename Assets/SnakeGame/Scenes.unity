@@ -1801,6 +1801,7 @@ GameObject:
   - component: {fileID: 1056572725}
   - component: {fileID: 1056572724}
   - component: {fileID: 1056572723}
+  - component: {fileID: 1056572728}
   m_Layer: 0
   m_Name: cubeee (5)
   m_TagString: Untagged
@@ -1900,6 +1901,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1056572728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1056572722}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.9999995, y: 1, z: 0.2}
+  m_Center: {x: 6.05, y: 0, z: 0}
 --- !u!1 &1107156666
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,6 +2086,7 @@ GameObject:
   - component: {fileID: 1275400457}
   - component: {fileID: 1275400456}
   - component: {fileID: 1275400458}
+  - component: {fileID: 1275400459}
   m_Layer: 0
   m_Name: cubeee (12)
   m_TagString: Untagged
@@ -2172,6 +2186,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad33a9fff2222274ab41b581b420d9e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1275400459
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1275400453}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 1, z: 0.2}
+  m_Center: {x: 5.99, y: 0, z: 0}
 --- !u!1 &1426772909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2658,6 +2684,7 @@ GameObject:
   - component: {fileID: 1722306245}
   - component: {fileID: 1722306244}
   - component: {fileID: 1722306243}
+  - component: {fileID: 1722306248}
   m_Layer: 0
   m_Name: cubeee
   m_TagString: Untagged
@@ -2686,7 +2713,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.9999995, y: 0.01, z: 0.2}
+  m_Size: {x: 7.17, y: 0.01, z: 0.2}
   m_Center: {x: 0, y: -0.55, z: 0}
 --- !u!65 &1722306245
 BoxCollider:
@@ -2698,8 +2725,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.47, y: 0.02, z: 0.2}
-  m_Center: {x: -0.24, y: 0.53, z: 0}
+  m_Size: {x: 6.31, y: 0.02, z: 0.2}
+  m_Center: {x: -0.66, y: 0.53, z: 0}
 --- !u!212 &1722306246
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2757,6 +2784,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1722306248
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1722306242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12, y: 1, z: 0.2}
+  m_Center: {x: -3.42, y: 0, z: 0}
 --- !u!1 &1810074033
 GameObject:
   m_ObjectHideFlags: 0
